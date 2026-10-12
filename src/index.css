@@ -3,10 +3,27 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    overflow-x: hidden;
   }
   
   body {
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Prevent horizontal scroll on all devices */
+  * {
+    box-sizing: border-box;
+  }
+
+  /* Ensure minimum touch target size on mobile */
+  @media (max-width: 640px) {
+    button, a {
+      min-height: 36px;
+    }
   }
 }
 
@@ -25,11 +42,18 @@
   .glass-card {
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.1);
   }
 
   .glow-effect {
-    box-shadow: 0 0 40px rgba(102, 126, 234, 0.3);
+    box-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
+  }
+
+  @media (min-width: 640px) {
+    .glow-effect {
+      box-shadow: 0 0 40px rgba(102, 126, 234, 0.3);
+    }
   }
 
   .animate-float {
@@ -50,6 +74,22 @@
 
   .animate-pulse-slow {
     animation: pulseSlow 4s ease-in-out infinite;
+  }
+
+  /* Reduce motion for users who prefer it */
+  @media (prefers-reduced-motion: reduce) {
+    .animate-float,
+    .animate-float-delay,
+    .animate-fade-in-up,
+    .animate-slide-in-left,
+    .animate-pulse-slow,
+    .animate-bounce {
+      animation: none !important;
+    }
+    
+    html {
+      scroll-behavior: auto;
+    }
   }
 }
 
@@ -98,7 +138,13 @@
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
+}
+
+@media (min-width: 768px) {
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
 }
 
 ::-webkit-scrollbar-track {
@@ -112,4 +158,23 @@
 
 ::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(135deg, #764ba2, #667eea);
+}
+
+/* Mobile-specific: prevent zoom on input focus */
+@media (max-width: 768px) {
+  input, textarea, select {
+    font-size: 16px !important;
+  }
+}
+
+/* Ensure proper viewport height on mobile browsers */
+.min-h-\[100dvh\] {
+  min-height: 100dvh;
+}
+
+/* Fix for iOS safe area */
+@supports (padding: env(safe-area-inset-bottom)) {
+  footer {
+    padding-bottom: calc(1.5rem + env(safe-area-inset-bottom));
+  }
 }
