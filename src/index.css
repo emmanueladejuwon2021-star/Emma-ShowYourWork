@@ -5,6 +5,7 @@
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
     overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
   
   body {
@@ -12,8 +13,21 @@
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  /* Dark theme (default) */
+  html.dark,
+  html.dark body {
     background-color: #050509;
     color: #ffffff;
+  }
+
+  /* Light theme */
+  html.light,
+  html.light body {
+    background-color: #fafaf9;
+    color: #1a1a1a;
   }
 
   * {
@@ -21,9 +35,14 @@
   }
 
   /* Selection styling */
-  ::selection {
+  html.dark ::selection {
     background: rgba(139, 92, 246, 0.3);
     color: #ffffff;
+  }
+
+  html.light ::selection {
+    background: rgba(139, 92, 246, 0.2);
+    color: #1a1a1a;
   }
 
   /* Focus styles */
@@ -56,6 +75,13 @@
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  html.light .glass {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(0, 0, 0, 0.05);
   }
 
   /* Marquee animation */
@@ -138,13 +164,22 @@
 }
 
 /* Custom scrollbar */
-::-webkit-scrollbar {
+html.dark ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 
-::-webkit-scrollbar-track {
+html.light ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+html.dark ::-webkit-scrollbar-track {
   background: #050509;
+}
+
+html.light ::-webkit-scrollbar-track {
+  background: #fafaf9;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -160,6 +195,10 @@
 * {
   scrollbar-width: thin;
   scrollbar-color: #8b5cf6 #050509;
+}
+
+html.light * {
+  scrollbar-color: #8b5cf6 #fafaf9;
 }
 
 /* Mobile-specific fixes */
@@ -187,4 +226,11 @@ img[loading] {
 
 img:not([loading]) {
   opacity: 1;
+}
+
+/* Theme transition */
+* {
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
 }

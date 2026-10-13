@@ -23,14 +23,14 @@ export default function Testimonials() {
         >
           <div className="flex items-center gap-3 mb-4">
             <div className="w-8 h-[1px] bg-gradient-to-r from-violet-500 to-transparent" />
-            <span className="text-xs sm:text-sm uppercase tracking-[0.2em] text-violet-400 font-medium">Testimonials</span>
+            <span className="text-xs sm:text-sm uppercase tracking-[0.2em] text-violet-500 dark:text-violet-400 font-medium">Testimonials</span>
           </div>
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 sm:gap-8">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white tracking-tight">
               Kind words from<br />
               <span className="bg-gradient-to-r from-violet-400 to-fuchsia-400 bg-clip-text text-transparent">great people.</span>
             </h2>
-            <p className="text-sm sm:text-base text-white/40 max-w-sm">
+            <p className="text-sm sm:text-base text-gray-600 dark:text-white/40 max-w-sm">
               Feedback from clients who trusted me with their vision.
             </p>
           </div>
@@ -44,10 +44,10 @@ export default function Testimonials() {
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.1 + i * 0.1 }}
-              className="group relative p-6 sm:p-8 rounded-2xl border border-white/[0.06] bg-white/[0.01] hover:bg-white/[0.03] hover:border-white/10 transition-all duration-500"
+              className="group relative p-6 sm:p-8 rounded-2xl border border-gray-200 dark:border-white/[0.06] bg-white dark:bg-white/[0.01] hover:bg-gray-50 dark:hover:bg-white/[0.03] hover:border-gray-300 dark:hover:border-white/10 transition-all duration-500"
             >
               {/* Quote mark */}
-              <div className="absolute top-4 right-5 sm:top-6 sm:right-6 text-4xl sm:text-5xl text-white/[0.04] font-serif leading-none">
+              <div className="absolute top-4 right-5 sm:top-6 sm:right-6 text-4xl sm:text-5xl text-gray-100 dark:text-white/[0.04] font-serif leading-none">
                 "
               </div>
 
@@ -61,18 +61,18 @@ export default function Testimonials() {
               </div>
 
               {/* Quote */}
-              <p className="text-sm sm:text-base text-white/60 leading-relaxed mb-5 sm:mb-6 italic">
+              <p className="text-sm sm:text-base text-gray-600 dark:text-white/60 leading-relaxed mb-5 sm:mb-6 italic">
                 "{testimonial.text}"
               </p>
 
               {/* Author */}
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-gradient-to-br from-violet-500/20 to-fuchsia-500/20 border border-white/10 flex items-center justify-center">
-                  <span className="text-sm font-bold text-white/80">{testimonial.name.charAt(0)}</span>
+                <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-gradient-to-br from-violet-100 to-fuchsia-100 dark:from-violet-500/20 dark:to-fuchsia-500/20 border border-gray-200 dark:border-white/10 flex items-center justify-center">
+                  <span className="text-sm font-bold text-gray-700 dark:text-white/80">{testimonial.name.charAt(0)}</span>
                 </div>
                 <div>
-                  <p className="text-sm font-semibold text-white">{testimonial.name}</p>
-                  <p className="text-xs text-white/40">{testimonial.role}</p>
+                  <p className="text-sm font-semibold text-gray-900 dark:text-white">{testimonial.name}</p>
+                  <p className="text-xs text-gray-500 dark:text-white/40">{testimonial.role}</p>
                 </div>
               </div>
             </motion.div>

@@ -31,14 +31,14 @@ export default function Portfolio() {
         >
           <div className="flex items-center gap-3 mb-4">
             <div className="w-8 h-[1px] bg-gradient-to-r from-violet-500 to-transparent" />
-            <span className="text-xs sm:text-sm uppercase tracking-[0.2em] text-violet-400 font-medium">Selected Work</span>
+            <span className="text-xs sm:text-sm uppercase tracking-[0.2em] text-violet-500 dark:text-violet-400 font-medium">Selected Work</span>
           </div>
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 sm:gap-8">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white tracking-tight">
               Projects I'm<br />
               <span className="bg-gradient-to-r from-violet-400 to-fuchsia-400 bg-clip-text text-transparent">proud of.</span>
             </h2>
-            <p className="text-sm sm:text-base text-white/40 max-w-sm">
+            <p className="text-sm sm:text-base text-gray-600 dark:text-white/40 max-w-sm">
               A curated selection of recent work spanning e-commerce, brand sites, and web applications.
             </p>
           </div>
@@ -57,8 +57,8 @@ export default function Portfolio() {
               onClick={() => setActiveFilter(cat)}
               className={`px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 ${
                 activeFilter === cat
-                  ? 'bg-white text-black'
-                  : 'bg-white/[0.04] text-white/50 hover:text-white hover:bg-white/[0.08] border border-white/[0.06]'
+                  ? 'bg-gray-900 dark:bg-white text-white dark:text-gray-900'
+                  : 'bg-gray-100 dark:bg-white/[0.04] text-gray-600 dark:text-white/50 hover:text-gray-900 dark:hover:text-white hover:bg-gray-200 dark:hover:bg-white/[0.08] border border-gray-200 dark:border-white/[0.06]'
               }`}
             >
               {cat}
@@ -134,22 +134,22 @@ function ProjectCard({ project, index, isInView }: { project: typeof import('../
       </div>
 
       {/* Project Info */}
-      <div className="p-4 sm:p-5 lg:p-6 bg-white/[0.02] border border-white/[0.04] border-t-0 rounded-b-2xl">
+      <div className="p-4 sm:p-5 lg:p-6 bg-white dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.04] border-t-0 rounded-b-2xl">
         <div className="flex items-start justify-between gap-3 mb-2 sm:mb-3">
           <div>
-            <span className="text-[10px] sm:text-xs uppercase tracking-wider text-violet-400 font-medium">{project.category}</span>
-            <h3 className="text-base sm:text-lg lg:text-xl font-bold text-white mt-1 group-hover:text-violet-300 transition-colors">
+            <span className="text-[10px] sm:text-xs uppercase tracking-wider text-violet-500 dark:text-violet-400 font-medium">{project.category}</span>
+            <h3 className="text-base sm:text-lg lg:text-xl font-bold text-gray-900 dark:text-white mt-1 group-hover:text-violet-600 dark:group-hover:text-violet-300 transition-colors">
               {project.title}
             </h3>
           </div>
-          <svg className="w-4 h-4 sm:w-5 sm:h-5 text-white/20 group-hover:text-white/60 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-4 h-4 sm:w-5 sm:h-5 text-gray-300 dark:text-white/20 group-hover:text-gray-500 dark:group-hover:text-white/60 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 17L17 7M17 7H7M17 7v10" />
           </svg>
         </div>
-        <p className="text-xs sm:text-sm text-white/40 leading-relaxed mb-3 sm:mb-4">{project.description}</p>
+        <p className="text-xs sm:text-sm text-gray-600 dark:text-white/40 leading-relaxed mb-3 sm:mb-4">{project.description}</p>
         <div className="flex flex-wrap gap-1.5 sm:gap-2">
           {project.tags.map(tag => (
-            <span key={tag} className="px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full text-[10px] sm:text-xs bg-white/[0.04] text-white/50 border border-white/[0.06]">
+            <span key={tag} className="px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full text-[10px] sm:text-xs bg-gray-100 dark:bg-white/[0.04] text-gray-600 dark:text-white/50 border border-gray-200 dark:border-white/[0.06]">
               {tag}
             </span>
           ))}

@@ -23,9 +23,9 @@ export default function About() {
         >
           <div className="flex items-center gap-3 mb-4">
             <div className="w-8 h-[1px] bg-gradient-to-r from-violet-500 to-transparent" />
-            <span className="text-xs sm:text-sm uppercase tracking-[0.2em] text-violet-400 font-medium">About</span>
+            <span className="text-xs sm:text-sm uppercase tracking-[0.2em] text-violet-500 dark:text-violet-400 font-medium">About</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white tracking-tight">
             The person behind<br />
             <span className="bg-gradient-to-r from-violet-400 to-fuchsia-400 bg-clip-text text-transparent">the pixels.</span>
           </h2>
@@ -40,7 +40,7 @@ export default function About() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: 0.2 + i * 0.1 }}
-                className={`text-sm sm:text-base lg:text-lg leading-relaxed ${i === 0 ? 'text-white/80' : 'text-white/50'}`}
+                className={`text-sm sm:text-base lg:text-lg leading-relaxed ${i === 0 ? 'text-gray-700 dark:text-white/80' : 'text-gray-600 dark:text-white/50'}`}
               >
                 {paragraph}
               </motion.p>
@@ -56,19 +56,19 @@ export default function About() {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="space-y-4"
             >
-              <h3 className="text-xs uppercase tracking-[0.2em] text-white/40 font-medium mb-5">Core Values</h3>
+              <h3 className="text-xs uppercase tracking-[0.2em] text-gray-500 dark:text-white/40 font-medium mb-5">Core Values</h3>
               {aboutContent.values.map((value, i) => (
                 <motion.div
                   key={i}
                   initial={{ opacity: 0, x: 20 }}
                   animate={isInView ? { opacity: 1, x: 0 } : {}}
                   transition={{ duration: 0.5, delay: 0.5 + i * 0.1 }}
-                  className="group flex items-start gap-4 p-3 sm:p-4 rounded-xl hover:bg-white/[0.02] transition-colors"
+                  className="group flex items-start gap-4 p-3 sm:p-4 rounded-xl hover:bg-gray-50 dark:hover:bg-white/[0.02] transition-colors"
                 >
-                  <span className="text-violet-400 text-lg mt-0.5 group-hover:scale-110 transition-transform">{value.icon}</span>
+                  <span className="text-violet-500 dark:text-violet-400 text-lg mt-0.5 group-hover:scale-110 transition-transform">{value.icon}</span>
                   <div>
-                    <h4 className="text-sm sm:text-base font-semibold text-white mb-0.5">{value.title}</h4>
-                    <p className="text-xs sm:text-sm text-white/40">{value.description}</p>
+                    <h4 className="text-sm sm:text-base font-semibold text-gray-900 dark:text-white mb-0.5">{value.title}</h4>
+                    <p className="text-xs sm:text-sm text-gray-500 dark:text-white/40">{value.description}</p>
                   </div>
                 </motion.div>
               ))}
@@ -103,12 +103,12 @@ function StatCard({ value, label, isActive, delay }: { value: string; label: str
       initial={{ opacity: 0, scale: 0.9 }}
       animate={isActive ? { opacity: 1, scale: 1 } : {}}
       transition={{ duration: 0.5, delay }}
-      className="p-4 sm:p-5 rounded-xl bg-white/[0.02] border border-white/[0.05] hover:border-white/10 transition-colors"
+      className="p-4 sm:p-5 rounded-xl bg-gray-50 dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.05] hover:border-gray-300 dark:hover:border-white/10 transition-colors"
     >
       <div className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-violet-400 to-fuchsia-400 bg-clip-text text-transparent">
         {isNumeric ? `${count}${suffix}` : value}
       </div>
-      <div className="text-[10px] sm:text-xs text-white/40 mt-1 uppercase tracking-wider">{label}</div>
+      <div className="text-[10px] sm:text-xs text-gray-500 dark:text-white/40 mt-1 uppercase tracking-wider">{label}</div>
     </motion.div>
   );
 }
