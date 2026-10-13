@@ -16,36 +16,36 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" ref={ref} className="relative py-20 sm:py-28 lg:py-36 overflow-hidden">
+    <section id="contact" ref={ref} className="relative py-12 sm:py-16 md:py-24 lg:py-32 overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0">
         <div className="absolute top-0 left-1/3 w-[500px] h-[500px] bg-violet-600/5 rounded-full blur-[120px]" />
         <div className="absolute bottom-0 right-1/3 w-[400px] h-[400px] bg-fuchsia-600/5 rounded-full blur-[120px]" />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="mb-12 sm:mb-16 lg:mb-20 text-center"
+          className="mb-8 sm:mb-12 lg:mb-20 text-center"
         >
-          <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="w-8 h-[1px] bg-gradient-to-r from-transparent to-violet-500" />
-            <span className="text-xs sm:text-sm uppercase tracking-[0.2em] text-violet-400 font-medium">Contact</span>
-            <div className="w-8 h-[1px] bg-gradient-to-l from-transparent to-violet-500" />
+          <div className="flex items-center justify-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+            <div className="w-6 sm:w-8 h-[1px] bg-gradient-to-r from-transparent to-violet-500" />
+            <span className="text-xs sm:text-sm uppercase tracking-[0.2em] text-violet-500 dark:text-violet-400 font-medium">Contact</span>
+            <div className="w-6 sm:w-8 h-[1px] bg-gradient-to-l from-transparent to-violet-500" />
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white tracking-tight">
             Let's create something<br />
             <span className="bg-gradient-to-r from-violet-400 via-fuchsia-400 to-amber-300 bg-clip-text text-transparent">remarkable together.</span>
           </h2>
-          <p className="text-sm sm:text-base text-white/40 mt-4 max-w-xl mx-auto">
+          <p className="text-sm sm:text-base text-gray-600 dark:text-white/40 mt-3 sm:mt-4 max-w-xl mx-auto">
             Have a project in mind? I'd love to hear about it. Let's talk about how we can bring your vision to life.
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-5 gap-8 lg:gap-12">
+        <div className="grid lg:grid-cols-5 gap-6 sm:gap-8 lg:gap-12">
           {/* Left - Info */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -55,19 +55,19 @@ export default function Contact() {
           >
             {/* Contact Details */}
             <div className="space-y-4">
-              <h3 className="text-xs uppercase tracking-[0.2em] text-white/40 font-medium">Get in touch</h3>
+              <h3 className="text-xs uppercase tracking-[0.2em] text-gray-500 dark:text-white/40 font-medium">Get in touch</h3>
               {[
                 { label: 'Email', value: personalInfo.email, icon: '✉' },
                 { label: 'Phone', value: personalInfo.phone, icon: '☎' },
                 { label: 'Location', value: personalInfo.location, icon: '◎' },
               ].map((item, i) => (
-                <div key={i} className="group flex items-center gap-4 p-3 rounded-xl hover:bg-white/[0.02] transition-colors">
-                  <div className="w-10 h-10 rounded-lg bg-white/[0.04] border border-white/[0.06] flex items-center justify-center text-violet-400 group-hover:border-violet-500/30 transition-colors">
+                <div key={i} className="group flex items-center gap-4 p-3 rounded-xl hover:bg-gray-50 dark:hover:bg-white/[0.02] transition-colors">
+                  <div className="w-10 h-10 rounded-lg bg-gray-100 dark:bg-white/[0.04] border border-gray-200 dark:border-white/[0.06] flex items-center justify-center text-violet-500 dark:text-violet-400 group-hover:border-violet-300 dark:group-hover:border-violet-500/30 transition-colors">
                     {item.icon}
                   </div>
                   <div>
-                    <p className="text-[10px] uppercase tracking-wider text-white/30">{item.label}</p>
-                    <p className="text-sm sm:text-base text-white/80 font-medium">{item.value}</p>
+                    <p className="text-[10px] uppercase tracking-wider text-gray-500 dark:text-white/30">{item.label}</p>
+                    <p className="text-sm sm:text-base text-gray-700 dark:text-white/80 font-medium">{item.value}</p>
                   </div>
                 </div>
               ))}
@@ -75,16 +75,16 @@ export default function Contact() {
 
             {/* Social */}
             <div className="space-y-4">
-              <h3 className="text-xs uppercase tracking-[0.2em] text-white/40 font-medium">Follow along</h3>
+              <h3 className="text-xs uppercase tracking-[0.2em] text-gray-500 dark:text-white/40 font-medium">Follow along</h3>
               <div className="grid grid-cols-2 gap-2">
                 {socialLinks.map((social, i) => (
                   <a
                     key={i}
                     href={social.url}
-                    className="group flex items-center gap-3 p-3 rounded-xl border border-white/[0.06] hover:border-white/10 hover:bg-white/[0.02] transition-all"
+                    className="group flex items-center gap-3 p-3 rounded-xl border border-gray-200 dark:border-white/[0.06] hover:border-gray-300 dark:hover:border-white/10 hover:bg-gray-50 dark:hover:bg-white/[0.02] transition-all"
                   >
-                    <span className="text-sm text-white/40 group-hover:text-violet-400 transition-colors">{social.name}</span>
-                    <svg className="w-3 h-3 text-white/20 group-hover:text-white/60 group-hover:translate-x-0.5 transition-all ml-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <span className="text-sm text-gray-600 dark:text-white/40 group-hover:text-gray-900 dark:group-hover:text-violet-400 transition-colors">{social.name}</span>
+                    <svg className="w-3 h-3 text-gray-300 dark:text-white/20 group-hover:text-gray-500 dark:group-hover:text-white/60 group-hover:translate-x-0.5 transition-all ml-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7v10" />
                     </svg>
                   </a>
@@ -93,15 +93,15 @@ export default function Contact() {
             </div>
 
             {/* Availability */}
-            <div className="p-5 rounded-xl bg-gradient-to-br from-violet-600/10 to-fuchsia-600/10 border border-violet-500/20">
+            <div className="p-5 rounded-xl bg-gradient-to-br from-violet-50 to-fuchsia-50 dark:from-violet-600/10 dark:to-fuchsia-600/10 border border-violet-200 dark:border-violet-500/20">
               <div className="flex items-center gap-2 mb-2">
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
                 </span>
-                <span className="text-xs text-emerald-400 font-medium">Currently Available</span>
+                <span className="text-xs text-emerald-600 dark:text-emerald-400 font-medium">Currently Available</span>
               </div>
-              <p className="text-xs sm:text-sm text-white/50">
+              <p className="text-xs sm:text-sm text-gray-600 dark:text-white/50">
                 Open for freelance projects and collaborations. Let's build something great.
               </p>
             </div>
@@ -114,8 +114,8 @@ export default function Contact() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="lg:col-span-3"
           >
-            <form onSubmit={handleSubmit} className="p-5 sm:p-8 rounded-2xl border border-white/[0.06] bg-white/[0.01] space-y-5 sm:space-y-6">
-              <div className="grid sm:grid-cols-2 gap-4 sm:gap-5">
+            <form onSubmit={handleSubmit} className="p-4 sm:p-5 md:p-6 lg:p-8 rounded-xl sm:rounded-2xl border border-gray-200 dark:border-white/[0.06] bg-white dark:bg-white/[0.01] space-y-4 sm:space-y-5 lg:space-y-6">
+              <div className="grid sm:grid-cols-2 gap-3 sm:gap-4 lg:gap-5">
                 <FormField
                   label="Name"
                   type="text"
@@ -164,7 +164,7 @@ export default function Contact() {
                 </span>
               </button>
 
-              <p className="text-[10px] sm:text-xs text-white/20 text-center">
+              <p className="text-[10px] sm:text-xs text-gray-400 dark:text-white/20 text-center">
                 I typically respond within 24 hours.
               </p>
             </form>
@@ -182,14 +182,14 @@ function FormField({ label, type, placeholder, value, onChange }: {
   value: string;
   onChange: (value: string) => void;
 }) {
-  const baseClasses = "w-full bg-white/[0.03] border border-white/[0.08] rounded-xl px-4 py-3 sm:py-3.5 text-sm sm:text-base text-white placeholder-white/20 focus:outline-none focus:border-violet-500/50 focus:bg-white/[0.05] transition-all";
+  const baseClasses = "w-full bg-gray-50 dark:bg-white/[0.03] border border-gray-200 dark:border-white/[0.08] rounded-lg sm:rounded-xl px-3 sm:px-4 py-2.5 sm:py-3 md:py-3.5 text-sm sm:text-base text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-white/20 focus:outline-none focus:border-violet-500/50 focus:bg-white dark:focus:bg-white/[0.05] transition-all";
 
   return (
     <div>
-      <label className="block text-xs text-white/40 mb-2 uppercase tracking-wider">{label}</label>
+      <label className="block text-[10px] sm:text-xs text-gray-500 dark:text-white/40 mb-1.5 sm:mb-2 uppercase tracking-wider">{label}</label>
       {type === 'textarea' ? (
         <textarea
-          rows={4}
+          rows={3}
           placeholder={placeholder}
           value={value}
           onChange={(e) => onChange(e.target.value)}

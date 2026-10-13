@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { ThemeProvider } from './context/ThemeContext';
 import Preloader from './components/Preloader';
 import Navigation from './components/Navigation';
 import Hero from './components/Hero';
@@ -29,34 +30,36 @@ function App() {
   };
 
   return (
-    <div className="bg-[#050509] text-white min-h-screen overflow-x-hidden">
-      {/* Preloader */}
-      {!isLoaded && <Preloader onComplete={handlePreloaderComplete} />}
+    <ThemeProvider>
+      <div className="bg-white dark:bg-[#050509] text-gray-900 dark:text-white min-h-screen overflow-x-hidden transition-colors duration-300">
+        {/* Preloader */}
+        {!isLoaded && <Preloader onComplete={handlePreloaderComplete} />}
 
-      {/* Main Content */}
-      <AnimatePresence>
-        {isLoaded && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6 }}
-          >
-            <Navigation />
-            <main>
-              <Hero />
-              <About />
-              <TechStack />
-              <Services />
-              <Experience />
-              <Portfolio />
-              <Testimonials />
-              <Contact />
-            </main>
-            <Footer />
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
+        {/* Main Content */}
+        <AnimatePresence>
+          {isLoaded && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6 }}
+            >
+              <Navigation />
+              <main>
+                <Hero />
+                <About />
+                <TechStack />
+                <Services />
+                <Experience />
+                <Portfolio />
+                <Testimonials />
+                <Contact />
+              </main>
+              <Footer />
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+    </ThemeProvider>
   );
 }
 

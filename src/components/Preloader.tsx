@@ -1,11 +1,14 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useState } from 'react';
+import { useTheme } from '../context/ThemeContext';
 
 interface PreloaderProps {
   onComplete: () => void;
 }
 
 export default function Preloader({ onComplete }: PreloaderProps) {
+  const { theme } = useTheme();
+  const isDark = theme === 'dark';
   const [isExiting, setIsExiting] = useState(false);
 
   useEffect(() => {
@@ -32,13 +35,17 @@ export default function Preloader({ onComplete }: PreloaderProps) {
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.6, ease: [0.76, 0, 0.24, 1] }}
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-[#050509]"
+          className={`fixed inset-0 z-[100] flex items-center justify-center ${
+            isDark ? 'bg-[#050509]' : 'bg-[#fafaf9]'
+          }`}
         >
           {/* Background grid */}
           <div 
             className="absolute inset-0 opacity-[0.03]"
             style={{
-              backgroundImage: 'linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)',
+              backgroundImage: isDark 
+                ? 'linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)'
+                : 'linear-gradient(rgba(0,0,0,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.5) 1px, transparent 1px)',
               backgroundSize: '60px 60px',
             }}
           />
@@ -55,7 +62,7 @@ export default function Preloader({ onComplete }: PreloaderProps) {
                 <span className="bg-gradient-to-br from-violet-400 via-fuchsia-400 to-amber-300 bg-clip-text text-transparent">
                   AE
                 </span>
-                <span className="text-white/20">.</span>
+                <span className={isDark ? 'text-white/20' : 'text-gray-300'}>.</span>
               </span>
             </motion.div>
 
@@ -64,7 +71,7 @@ export default function Preloader({ onComplete }: PreloaderProps) {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3 }}
-              className="w-48 h-[2px] bg-white/5 rounded-full overflow-hidden"
+              className={`w-48 h-[2px] ${isDark ? 'bg-white/5' : 'bg-gray-200'} rounded-full overflow-hidden`}
             >
               <motion.div
                 initial={{ x: '-100%' }}
@@ -79,7 +86,7 @@ export default function Preloader({ onComplete }: PreloaderProps) {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 0.6 }}
-              className="text-xs tracking-[0.3em] uppercase text-white/30 font-light"
+              className={`text-xs tracking-[0.3em] uppercase ${isDark ? 'text-white/30' : 'text-gray-400'} font-light`}
             >
               Crafting experiences
             </motion.p>
