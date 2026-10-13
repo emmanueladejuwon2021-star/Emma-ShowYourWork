@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://adejuwonemmanuel.vercel.app/sitemap.xml
+
+# Block access to sensitive files
+Disallow: /api/
+Disallow: /_next/
+Disallow: /node_modules/
