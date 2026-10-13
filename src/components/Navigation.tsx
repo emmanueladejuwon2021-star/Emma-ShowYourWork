@@ -33,8 +33,8 @@ export default function Navigation() {
         className="fixed top-0 left-0 right-0 z-50"
       >
         <div className="backdrop-blur-xl bg-white/60 dark:bg-[#050509]/60 border-b border-gray-200/50 dark:border-white/[0.04]">
-          <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
-            <div className="flex items-center justify-between h-16 sm:h-20">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
+            <div className="flex items-center justify-between h-14 sm:h-16 lg:h-20">
               {/* Logo */}
               <button
                 onClick={() => scrollTo('home')}
@@ -122,7 +122,7 @@ function MobileMenuButton({ scrollTo }: { scrollTo: (id: string) => void }) {
         transition={{ duration: 0.3, ease: [0.76, 0, 0.24, 1] }}
         className="absolute top-full left-0 right-0 bg-white/95 dark:bg-[#050509]/95 backdrop-blur-xl border-b border-gray-200/50 dark:border-white/[0.04] overflow-hidden"
       >
-        <div className="px-5 py-4 flex flex-col gap-1">
+        <div className="px-4 py-3 flex flex-col gap-0.5">
           {navItems.map((item, i) => (
             <motion.button
               key={item.id}
@@ -130,7 +130,7 @@ function MobileMenuButton({ scrollTo }: { scrollTo: (id: string) => void }) {
               animate={isOpen ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
               transition={{ delay: i * 0.05, duration: 0.3 }}
               onClick={() => { scrollTo(item.id); setIsOpen(false); }}
-              className="text-left py-3 px-2 text-base font-medium text-gray-700 dark:text-white/70 hover:text-gray-900 dark:hover:text-white transition-colors flex items-center justify-between group"
+              className="text-left py-2.5 px-2 text-sm sm:text-base font-medium text-gray-700 dark:text-white/70 hover:text-gray-900 dark:hover:text-white transition-colors flex items-center justify-between group"
             >
               <span>{item.label}</span>
               <span className="text-gray-300 dark:text-white/20 group-hover:text-gray-500 dark:group-hover:text-white/50 group-hover:translate-x-1 transition-all text-sm">→</span>
@@ -141,7 +141,7 @@ function MobileMenuButton({ scrollTo }: { scrollTo: (id: string) => void }) {
             animate={isOpen ? { opacity: 1 } : { opacity: 0 }}
             transition={{ delay: 0.3 }}
             onClick={() => { scrollTo('contact'); setIsOpen(false); }}
-            className="mt-3 py-3 rounded-full bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white font-medium text-sm"
+            className="mt-2 py-2.5 rounded-full bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white font-medium text-sm"
           >
             Start a Project
           </motion.button>

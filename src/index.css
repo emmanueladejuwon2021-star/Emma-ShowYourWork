@@ -3,12 +3,39 @@
 /* Configure Tailwind v4 to use class-based dark mode */
 @custom-variant dark (&:where(.dark, .dark *));
 
+/* CSS Custom Properties for responsive design system */
+:root {
+  /* Fluid spacing scale */
+  --space-xs: clamp(0.25rem, 0.5vw, 0.5rem);
+  --space-sm: clamp(0.5rem, 1vw, 0.75rem);
+  --space-md: clamp(0.75rem, 1.5vw, 1rem);
+  --space-lg: clamp(1rem, 2vw, 1.5rem);
+  --space-xl: clamp(1.5rem, 3vw, 2rem);
+  --space-2xl: clamp(2rem, 4vw, 3rem);
+  --space-3xl: clamp(3rem, 6vw, 4rem);
+  --space-4xl: clamp(4rem, 8vw, 6rem);
+  
+  /* Container max-widths */
+  --container-sm: 640px;
+  --container-md: 768px;
+  --container-lg: 1024px;
+  --container-xl: 1280px;
+  
+  /* Border radius scale */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
     overflow-x: hidden;
     transition: background-color 0.3s ease, color 0.3s ease;
+    font-size: 16px;
   }
   
   body {
@@ -17,9 +44,10 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     transition: background-color 0.3s ease, color 0.3s ease;
+    line-height: 1.6;
   }
 
-  /* Dark theme (default) */
+  /* Dark theme */
   html.dark,
   html.dark body {
     background-color: #050509;
@@ -55,15 +83,71 @@
     border-radius: 4px;
   }
 
-  /* Mobile touch targets */
-  @media (max-width: 640px) {
+  /* Responsive typography */
+  h1, h2, h3, h4, h5, h6 {
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+  }
+
+  /* Mobile touch targets - WCAG 2.5.5 */
+  @media (max-width: 768px) {
     button, a, input, textarea, select {
-      min-height: 40px;
+      min-height: 44px;
+    }
+  }
+
+  /* Reduce motion for accessibility */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+    
+    html {
+      scroll-behavior: auto;
     }
   }
 }
 
 @layer components {
+  /* Container with responsive padding */
+  .container-responsive {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--space-md);
+    padding-right: var(--space-md);
+  }
+
+  @media (min-width: 640px) {
+    .container-responsive {
+      padding-left: var(--space-lg);
+      padding-right: var(--space-lg);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container-responsive {
+      padding-left: var(--space-xl);
+      padding-right: var(--space-xl);
+      max-width: var(--container-xl);
+    }
+  }
+
+  /* Section spacing */
+  .section-padding {
+    padding-top: var(--space-3xl);
+    padding-bottom: var(--space-3xl);
+  }
+
+  @media (min-width: 768px) {
+    .section-padding {
+      padding-top: var(--space-4xl);
+      padding-bottom: var(--space-4xl);
+    }
+  }
+
   /* Gradient text */
   .gradient-text {
     background: linear-gradient(135deg, #8b5cf6 0%, #d946ef 50%, #f59e0b 100%);
@@ -151,19 +235,6 @@
     background-size: 200% 100%;
     animation: shimmer 3s ease-in-out infinite;
   }
-
-  /* Reduce motion */
-  @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
-    }
-    
-    html {
-      scroll-behavior: auto;
-    }
-  }
 }
 
 /* Custom scrollbar */
@@ -236,4 +307,12 @@ img:not([loading]) {
   transition-property: background-color, border-color, color, fill, stroke;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 300ms;
+}
+
+/* Mobile performance optimizations */
+@media (max-width: 768px) {
+  .glass {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
 }

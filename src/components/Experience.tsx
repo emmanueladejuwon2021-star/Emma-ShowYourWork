@@ -6,7 +6,7 @@ export default function Experience() {
   const { ref, isInView } = useInView(0.1);
 
   return (
-    <section ref={ref} className="relative py-20 sm:py-28 lg:py-36 overflow-hidden border-y border-gray-200 dark:border-white/[0.04]">
+    <section ref={ref} className="relative py-12 sm:py-16 md:py-24 lg:py-36 overflow-hidden border-y border-gray-200 dark:border-white/[0.04]">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-fuchsia-600/[0.02] to-transparent" />
 
       <div className="relative max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">

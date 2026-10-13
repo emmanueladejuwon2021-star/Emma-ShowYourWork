@@ -7,7 +7,7 @@ export default function TechStack() {
   const categories = ['Frontend', 'Backend', 'Tools'];
 
   return (
-    <section ref={ref} className="relative py-16 sm:py-20 lg:py-24 overflow-hidden border-y border-gray-200 dark:border-white/[0.04]">
+    <section ref={ref} className="relative py-10 sm:py-14 md:py-20 lg:py-24 overflow-hidden border-y border-gray-200 dark:border-white/[0.04]">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-violet-600/[0.02] to-transparent" />
 

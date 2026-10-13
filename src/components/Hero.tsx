@@ -23,10 +23,10 @@ export default function Hero() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 w-full pt-24 pb-16 sm:pt-32 sm:pb-20">
-        <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 w-full pt-20 pb-12 sm:pt-24 sm:pb-16 lg:pt-32 lg:pb-20">
+        <div className="grid lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-12 items-center">
           {/* Left Column */}
-          <div className="lg:col-span-7 space-y-6 sm:space-y-8">
+          <div className="lg:col-span-7 space-y-4 sm:space-y-6 lg:space-y-8">
             {/* Status badge */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -43,18 +43,18 @@ export default function Hero() {
             </motion.div>
 
             {/* Headline */}
-            <div className="space-y-2 sm:space-y-3">
+            <div className="space-y-1 sm:space-y-2 lg:space-y-3">
               <motion.h1
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4, ease: [0.76, 0, 0.24, 1] }}
-                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.05]"
+                className="text-[2.5rem] sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1] sm:leading-[1.05]"
               >
-                <span className="block text-gray-900 dark:text-white">Hi, I'm</span>
+                <span className="block text-gray-900 dark:text-white text-xl sm:text-2xl lg:text-3xl font-medium">Hi, I'm</span>
                 <span className="block bg-gradient-to-r from-violet-400 via-fuchsia-400 to-amber-300 bg-clip-text text-transparent">
                   {personalInfo.firstName}
                 </span>
-                <span className="block text-gray-700 dark:text-white/80">{personalInfo.lastName}</span>
+                <span className="block text-gray-700 dark:text-white/80 text-2xl sm:text-3xl lg:text-4xl">{personalInfo.lastName}</span>
               </motion.h1>
             </div>
 
@@ -63,7 +63,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
-              className="text-base sm:text-lg lg:text-xl text-gray-600 dark:text-white/50 max-w-xl leading-relaxed"
+              className="text-sm sm:text-base lg:text-lg text-gray-600 dark:text-white/50 max-w-xl leading-relaxed"
             >
               {personalInfo.subtitle}
             </motion.p>
@@ -73,15 +73,15 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.8 }}
-              className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2"
+              className="flex flex-col sm:flex-row gap-2 sm:gap-3 lg:gap-4 pt-1 sm:pt-2"
             >
               <button
                 onClick={() => scrollTo('work')}
-                className="group relative px-7 py-3.5 sm:py-4 rounded-full overflow-hidden"
+                className="group relative px-6 sm:px-7 py-3 sm:py-3.5 lg:py-4 rounded-full overflow-hidden text-sm sm:text-base"
               >
                 <span className="absolute inset-0 bg-gradient-to-r from-violet-600 to-fuchsia-600 group-hover:from-violet-500 group-hover:to-fuchsia-500 transition-all duration-300" />
                 <span className="absolute inset-0 bg-gradient-to-r from-violet-600 to-fuchsia-600 blur-xl opacity-40 group-hover:opacity-60 transition-opacity" />
-                <span className="relative flex items-center justify-center gap-2 text-white font-medium text-sm sm:text-base">
+                <span className="relative flex items-center justify-center gap-2 text-white font-medium">
                   View My Work
                   <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -90,9 +90,9 @@ export default function Hero() {
               </button>
               <button
                 onClick={() => scrollTo('contact')}
-                className="group px-7 py-3.5 sm:py-4 rounded-full border border-gray-300 dark:border-white/10 hover:border-gray-400 dark:hover:border-white/20 hover:bg-gray-50 dark:hover:bg-white/[0.03] transition-all duration-300"
+                className="group px-6 sm:px-7 py-3 sm:py-3.5 lg:py-4 rounded-full border border-gray-300 dark:border-white/10 hover:border-gray-400 dark:hover:border-white/20 hover:bg-gray-50 dark:hover:bg-white/[0.03] transition-all duration-300 text-sm sm:text-base"
               >
-                <span className="flex items-center justify-center gap-2 text-gray-700 dark:text-white/80 group-hover:text-gray-900 dark:group-hover:text-white font-medium text-sm sm:text-base">
+                <span className="flex items-center justify-center gap-2 text-gray-700 dark:text-white/80 group-hover:text-gray-900 dark:group-hover:text-white font-medium">
                   Get In Touch
                 </span>
               </button>
@@ -103,28 +103,29 @@ export default function Hero() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 1 }}
-              className="flex items-center gap-4 pt-4 sm:pt-6"
+              className="flex items-center gap-3 sm:gap-4 pt-2 sm:pt-4 lg:pt-6"
             >
               <div className="flex -space-x-2">
                 {['🧑‍💼', '👩‍💻', '👨‍🎨', '👩‍🔬'].map((emoji, i) => (
-                  <div key={i} className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-gradient-to-br from-gray-100 to-gray-50 dark:from-white/10 dark:to-white/5 border border-gray-200 dark:border-white/10 flex items-center justify-center text-sm">
+                  <div key={i} className="w-7 h-7 sm:w-8 sm:h-8 lg:w-9 lg:h-9 rounded-full bg-gradient-to-br from-gray-100 to-gray-50 dark:from-white/10 dark:to-white/5 border border-gray-200 dark:border-white/10 flex items-center justify-center text-xs sm:text-sm">
                     {emoji}
                   </div>
                 ))}
               </div>
               <div>
-                <p className="text-xs sm:text-sm text-gray-700 dark:text-white/70 font-medium">Trusted by 30+ clients</p>
-                <p className="text-[10px] sm:text-xs text-gray-500 dark:text-white/40">across 5+ countries</p>
+                <p className="text-xs sm:text-sm text-gray-700 dark:text-white/70 font-medium leading-tight">Trusted by 30+ clients</p>
+                <p className="text-[10px] sm:text-xs text-gray-500 dark:text-white/40 leading-tight">across 5+ countries</p>
               </div>
             </motion.div>
           </div>
 
-          {/* Right Column - Visual */}
+          {/* Right Column - Visual - Hidden on mobile/tablet for performance */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.5, ease: [0.76, 0, 0.24, 1] }}
             className="lg:col-span-5 hidden lg:flex items-center justify-center"
+            aria-hidden="true"
           >
             <div className="relative w-full max-w-md aspect-square">
               {/* Orbiting rings */}
@@ -168,18 +169,18 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        {/* Scroll indicator */}
+        {/* Scroll indicator - Hidden on mobile */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.5 }}
-          className="absolute bottom-6 sm:bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+          className="absolute bottom-4 sm:bottom-6 lg:bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 sm:gap-2"
         >
-          <span className="text-[10px] uppercase tracking-[0.2em] text-gray-400 dark:text-white/30">Scroll</span>
+          <span className="text-[9px] sm:text-[10px] uppercase tracking-[0.2em] text-gray-400 dark:text-white/30">Scroll</span>
           <motion.div
             animate={{ y: [0, 6, 0] }}
             transition={{ duration: 1.5, repeat: Infinity }}
-            className="w-[1px] h-6 bg-gradient-to-b from-gray-400 dark:from-white/40 to-transparent"
+            className="w-[1px] h-4 sm:h-6 bg-gradient-to-b from-gray-400 dark:from-white/40 to-transparent"
           />
         </motion.div>
       </div>
