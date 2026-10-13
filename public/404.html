@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 - Page Not Found | Adejuwon Emmanuel</title>
+  <meta name="description" content="The page you're looking for doesn't exist.">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #050509;
+      color: #ffffff;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      overflow: hidden;
+    }
+    
+    .container {
+      text-align: center;
+      max-width: 600px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .error-code {
+      font-size: clamp(6rem, 15vw, 10rem);
+      font-weight: 900;
+      background: linear-gradient(135deg, #8b5cf6 0%, #d946ef 50%, #f59e0b 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+      margin-bottom: 1rem;
+      animation: float 3s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    h1 {
+      font-size: clamp(1.5rem, 4vw, 2rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: #ffffff;
+    }
+    
+    p {
+      font-size: clamp(1rem, 2.5vw, 1.125rem);
+      color: rgba(255, 255, 255, 0.6);
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+    
+    .button {
+      display: inline-block;
+      padding: 0.875rem 2rem;
+      background: linear-gradient(135deg, #8b5cf6 0%, #d946ef 100%);
+      color: #ffffff;
+      text-decoration: none;
+      border-radius: 9999px;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+    }
+    
+    .button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 30px rgba(139, 92, 246, 0.5);
+    }
+    
+    .background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      opacity: 0.1;
+    }
+    
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      animation: pulse 4s ease-in-out infinite;
+    }
+    
+    .orb-1 {
+      width: 300px;
+      height: 300px;
+      background: #8b5cf6;
+      top: 20%;
+      left: 10%;
+      animation-delay: 0s;
+    }
+    
+    .orb-2 {
+      width: 400px;
+      height: 400px;
+      background: #d946ef;
+      bottom: 10%;
+      right: 10%;
+      animation-delay: 2s;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { opacity: 0.3; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.1); }
+    }
+  </style>
+</head>
+<body>
+  <div class="background">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+  </div>
+  
+  <div class="container">
+    <div class="error-code">404</div>
+    <h1>Page Not Found</h1>
+    <p>Oops! The page you're looking for doesn't exist or has been moved.</p>
+    <a href="/" class="button">← Back to Home</a>
+  </div>
+  
+  <script>
+    // Track 404 errors (optional analytics)
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('event', '404_error', {
+        event_category: 'Error',
+        event_label: window.location.pathname
+      });
+    }
+  </script>
+</body>
+</html>
