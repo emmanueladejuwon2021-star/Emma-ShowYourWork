@@ -8,6 +8,12 @@ export function useInView(threshold = 0.1, triggerOnce = true) {
     const element = ref.current;
     if (!element) return;
 
+    // Check if IntersectionObserver is supported
+    if (!('IntersectionObserver' in window)) {
+      setIsInView(true);
+      return;
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -38,29 +44,15 @@ export function useScrollProgress() {
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return progress;
 }
 
-export function useMousePosition() {
-  const [position, setPosition] = useState({ x: 0, y: 0 });
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setPosition({ x: e.clientX, y: e.clientY });
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
-
-  return position;
-}
-
 export function useActiveSection(sectionIds: string[]) {
-  const [activeSection, setActiveSection] = useState(sectionIds[0]);
+  const [activeSection, setActiveSection] = useState(sectionIds[0] || '');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -87,7 +79,7 @@ export function useCountUp(end: number, duration = 2000, start = 0, isActive = t
   const [count, setCount] = useState(start);
 
   useEffect(() => {
-    if (!isActive) return;
+    if (!isActive || isNaN(end)) return;
     
     let startTime: number | null = null;
     let animationFrame: number;
@@ -95,7 +87,7 @@ export function useCountUp(end: number, duration = 2000, start = 0, isActive = t
     const animate = (timestamp: number) => {
       if (!startTime) startTime = timestamp;
       const progress = Math.min((timestamp - startTime) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+      const eased = 1 - Math.pow(1 - progress, 3);
       setCount(Math.floor(start + (end - start) * eased));
 
       if (progress < 1) {
@@ -104,25 +96,12 @@ export function useCountUp(end: number, duration = 2000, start = 0, isActive = t
     };
 
     animationFrame = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(animationFrame);
+    return () => {
+      if (animationFrame) cancelAnimationFrame(animationFrame);
+    };
   }, [end, duration, start, isActive]);
 
   return count;
-}
-
-export function useMediaQuery(query: string): boolean {
-  const [matches, setMatches] = useState(false);
-
-  useEffect(() => {
-    const media = window.matchMedia(query);
-    setMatches(media.matches);
-
-    const listener = (e: MediaQueryListEvent) => setMatches(e.matches);
-    media.addEventListener('change', listener);
-    return () => media.removeEventListener('change', listener);
-  }, [query]);
-
-  return matches;
 }
 
 export function useSmoothScroll() {

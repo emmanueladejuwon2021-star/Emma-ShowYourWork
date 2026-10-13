@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Preloader from './components/Preloader';
 import Navigation from './components/Navigation';
@@ -15,14 +15,23 @@ import Footer from './components/Footer';
 function App() {
   const [isLoaded, setIsLoaded] = useState(false);
 
-  const handlePreloaderComplete = useCallback(() => {
-    setIsLoaded(true);
+  useEffect(() => {
+    // Fallback: ensure content shows even if preloader fails
+    const timeout = setTimeout(() => {
+      setIsLoaded(true);
+    }, 3000);
+
+    return () => clearTimeout(timeout);
   }, []);
+
+  const handlePreloaderComplete = () => {
+    setIsLoaded(true);
+  };
 
   return (
     <div className="bg-[#050509] text-white min-h-screen overflow-x-hidden">
       {/* Preloader */}
-      <Preloader onComplete={handlePreloaderComplete} />
+      {!isLoaded && <Preloader onComplete={handlePreloaderComplete} />}
 
       {/* Main Content */}
       <AnimatePresence>
@@ -30,7 +39,7 @@ function App() {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
+            transition={{ duration: 0.6 }}
           >
             <Navigation />
             <main>

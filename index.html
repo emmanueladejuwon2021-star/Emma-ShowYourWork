@@ -35,7 +35,15 @@
     </style>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <!-- Fallback content if JavaScript is disabled -->
+      <noscript>
+        <div style="padding: 2rem; text-align: center; color: white; font-family: Inter, sans-serif;">
+          <h1 style="font-size: 2rem; margin-bottom: 1rem;">Adejuwon Emmanuel</h1>
+          <p style="color: rgba(255,255,255,0.6);">Please enable JavaScript to view this website.</p>
+        </div>
+      </noscript>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
