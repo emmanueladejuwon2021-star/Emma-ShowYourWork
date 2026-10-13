@@ -6,29 +6,42 @@ interface PreloaderProps {
 }
 
 export default function Preloader({ onComplete }: PreloaderProps) {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isExiting, setIsExiting] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-      setTimeout(onComplete, 800);
-    }, 1800);
-    return () => clearTimeout(timer);
+    // Start exit animation after 1.5s
+    const exitTimer = setTimeout(() => {
+      setIsExiting(true);
+    }, 1500);
+
+    // Call onComplete after exit animation (1.5s + 0.6s animation)
+    const completeTimer = setTimeout(() => {
+      onComplete();
+    }, 2100);
+
+    return () => {
+      clearTimeout(exitTimer);
+      clearTimeout(completeTimer);
+    };
   }, [onComplete]);
 
   return (
     <AnimatePresence>
-      {isLoading && (
+      {!isExiting && (
         <motion.div
+          initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.6, ease: [0.76, 0, 0.24, 1] }}
           className="fixed inset-0 z-[100] flex items-center justify-center bg-[#050509]"
         >
           {/* Background grid */}
-          <div className="absolute inset-0 opacity-[0.03]" style={{
-            backgroundImage: 'linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)',
-            backgroundSize: '60px 60px',
-          }} />
+          <div 
+            className="absolute inset-0 opacity-[0.03]"
+            style={{
+              backgroundImage: 'linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)',
+              backgroundSize: '60px 60px',
+            }}
+          />
 
           <div className="relative flex flex-col items-center gap-8">
             {/* Logo */}
@@ -55,8 +68,8 @@ export default function Preloader({ onComplete }: PreloaderProps) {
             >
               <motion.div
                 initial={{ x: '-100%' }}
-                animate={{ x: '100%' }}
-                transition={{ duration: 1.4, ease: [0.76, 0, 0.24, 1], repeat: Infinity }}
+                animate={{ x: '200%' }}
+                transition={{ duration: 1.2, ease: [0.76, 0, 0.24, 1] }}
                 className="h-full w-1/2 bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-full"
               />
             </motion.div>

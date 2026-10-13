@@ -1,4 +1,4 @@
-
+import { useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useActiveSection, useSmoothScroll } from '../hooks/useAnimations';
 
@@ -144,5 +144,3 @@ function MobileMenuButton({ scrollTo }: { scrollTo: (id: string) => void }) {
     </div>
   );
 }
-
-import { useState } from 'react';
