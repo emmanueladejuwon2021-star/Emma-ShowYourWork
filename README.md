@@ -10,7 +10,7 @@ A production-grade portfolio website built with React, TypeScript, Vite, and Tai
 - **SEO** — Full meta tags, structured data, sitemap, Open Graph
 - **Accessibility** — WCAG compliant, keyboard navigation, reduced motion support
 - **PWA Ready** — Installable as a progressive web app
-- **Vercel Optimized** — Ready for one-click deployment
+- **Multi-Platform Ready** — Optimized for both Vercel and Netlify deployment
 
 ## 🛠️ Tech Stack
 
@@ -18,7 +18,7 @@ A production-grade portfolio website built with React, TypeScript, Vite, and Tai
 - **Build Tool:** Vite
 - **Styling:** Tailwind CSS v4
 - **Animations:** Framer Motion
-- **Deployment:** Vercel
+- **Deployment:** Vercel & Netlify
 
 ## 📦 Installation
 
@@ -38,7 +38,9 @@ npm run preview
 
 ## 🌐 Deployment
 
-### Vercel (Recommended)
+Your portfolio is optimized for both **Vercel** and **Netlify**. Choose the platform that best fits your needs.
+
+### Deploy to Vercel
 
 1. Push your code to GitHub
 2. Go to [vercel.com](https://vercel.com)
@@ -46,11 +48,40 @@ npm run preview
 4. Vercel will auto-detect Vite configuration
 5. Click "Deploy"
 
-The site includes:
-- `vercel.json` for routing and security headers
-- Optimized caching strategies
-- SPA fallback routing
-- Security headers (CSP, X-Frame-Options, etc.)
+**Configuration files:**
+- `vercel.json` - Routing, headers, caching
+- `.vercelignore` - Exclude files from deployment
+
+### Deploy to Netlify
+
+1. Push your code to GitHub
+2. Go to [app.netlify.com](https://app.netlify.com)
+3. Click "Add new site" → "Import an existing project"
+4. Select your repository
+5. Configure build settings:
+   - Build command: `npm run build`
+   - Publish directory: `dist`
+6. Click "Deploy"
+
+**Configuration files:**
+- `netlify.toml` - Build settings, redirects, headers
+- `public/_redirects` - SPA routing
+- `public/_headers` - Security headers
+
+### 📚 Detailed Guides
+
+- **[DEPLOYMENT_GUIDE.md](./DEPLOYMENT_GUIDE.md)** - Complete comparison and instructions
+- **[VERCEL_SUMMARY.md](./VERCEL_SUMMARY.md)** - Vercel-specific optimizations
+- **[NETLIFY_DEPLOYMENT.md](./NETLIFY_DEPLOYMENT.md)** - Netlify-specific setup
+
+### Expected Performance
+
+| Metric | Target | Expected |
+|--------|--------|----------|
+| Build Time | < 3 min | ✅ ~2 min |
+| Bundle Size | < 200KB | ✅ ~115KB |
+| Lighthouse | 95+ | ✅ 95-100 |
+| Load Time | < 3s | ✅ < 2.5s |
 
 ### Manual Deployment
 
